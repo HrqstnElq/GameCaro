@@ -31,16 +31,17 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.panel_ChessBoard = new System.Windows.Forms.Panel();
             this.panel_menu = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lable_ip = new System.Windows.Forms.Label();
+            this.panel_IP = new System.Windows.Forms.Panel();
             this.txb_IP = new Guna.UI.WinForms.GunaTextBox();
+            this.lable_ip = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.swift_lanMode = new Guna.UI.WinForms.GunaSwitch();
             this.radio_pvc = new Guna.UI.WinForms.GunaRadioButton();
             this.radio_pvp = new Guna.UI.WinForms.GunaRadioButton();
             this.btn_Start = new Guna.UI.WinForms.GunaAdvenceButton();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnl_timer = new System.Windows.Forms.GroupBox();
             this.label_luot = new System.Windows.Forms.Label();
             this.guna2CircleProgressBar1 = new Guna.UI2.WinForms.Guna2CircleProgressBar();
@@ -52,15 +53,14 @@
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.redoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel_IP = new System.Windows.Forms.Panel();
             this.panel_menu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox2.SuspendLayout();
+            this.panel_IP.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnl_timer.SuspendLayout();
             this.guna2CircleProgressBar1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            this.panel_IP.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_ChessBoard
@@ -87,17 +87,6 @@
             this.panel_menu.Size = new System.Drawing.Size(293, 772);
             this.panel_menu.TabIndex = 5;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::GameCaro.Properties.Resources.avata;
-            this.pictureBox1.Location = new System.Drawing.Point(5, 4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(276, 215);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.panel_IP);
@@ -113,15 +102,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Control";
             // 
-            // lable_ip
+            // panel_IP
             // 
-            this.lable_ip.AutoSize = true;
-            this.lable_ip.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lable_ip.Location = new System.Drawing.Point(12, 21);
-            this.lable_ip.Name = "lable_ip";
-            this.lable_ip.Size = new System.Drawing.Size(26, 24);
-            this.lable_ip.TabIndex = 9;
-            this.lable_ip.Text = "IP";
+            this.panel_IP.Controls.Add(this.txb_IP);
+            this.panel_IP.Controls.Add(this.lable_ip);
+            this.panel_IP.Enabled = false;
+            this.panel_IP.Location = new System.Drawing.Point(6, 215);
+            this.panel_IP.Name = "panel_IP";
+            this.panel_IP.Size = new System.Drawing.Size(265, 59);
+            this.panel_IP.TabIndex = 10;
             // 
             // txb_IP
             // 
@@ -139,6 +128,16 @@
             this.txb_IP.Size = new System.Drawing.Size(218, 30);
             this.txb_IP.TabIndex = 8;
             this.txb_IP.Text = "127.0.0.1";
+            // 
+            // lable_ip
+            // 
+            this.lable_ip.AutoSize = true;
+            this.lable_ip.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lable_ip.Location = new System.Drawing.Point(12, 21);
+            this.lable_ip.Name = "lable_ip";
+            this.lable_ip.Size = new System.Drawing.Size(26, 24);
+            this.lable_ip.TabIndex = 9;
+            this.lable_ip.Text = "IP";
             // 
             // panel1
             // 
@@ -182,7 +181,7 @@
             this.radio_pvc.FillColor = System.Drawing.Color.White;
             this.radio_pvc.Location = new System.Drawing.Point(4, 57);
             this.radio_pvc.Name = "radio_pvc";
-            this.radio_pvc.Size = new System.Drawing.Size(137, 23);
+            this.radio_pvc.Size = new System.Drawing.Size(111, 20);
             this.radio_pvc.TabIndex = 0;
             this.radio_pvc.Text = "Người vs Máy";
             this.radio_pvc.CheckedChanged += new System.EventHandler(this.radio_pvc_CheckedChanged);
@@ -195,7 +194,7 @@
             this.radio_pvp.FillColor = System.Drawing.Color.White;
             this.radio_pvp.Location = new System.Drawing.Point(4, 13);
             this.radio_pvp.Name = "radio_pvp";
-            this.radio_pvp.Size = new System.Drawing.Size(150, 23);
+            this.radio_pvp.Size = new System.Drawing.Size(121, 20);
             this.radio_pvp.TabIndex = 0;
             this.radio_pvp.Text = "Người vs Người";
             this.radio_pvp.CheckedChanged += new System.EventHandler(this.radio_pvp_CheckedChanged);
@@ -236,6 +235,17 @@
             this.btn_Start.Text = "Start";
             this.btn_Start.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.btn_Start.Click += new System.EventHandler(this.btn_Start_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::GameCaro.Properties.Resources.avata;
+            this.pictureBox1.Location = new System.Drawing.Point(5, 4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(276, 215);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
             // 
             // pnl_timer
             // 
@@ -349,16 +359,6 @@
             this.redoToolStripMenuItem.Text = "Redo";
             this.redoToolStripMenuItem.Click += new System.EventHandler(this.redoToolStripMenuItem_Click);
             // 
-            // panel_IP
-            // 
-            this.panel_IP.Controls.Add(this.txb_IP);
-            this.panel_IP.Controls.Add(this.lable_ip);
-            this.panel_IP.Enabled = false;
-            this.panel_IP.Location = new System.Drawing.Point(6, 215);
-            this.panel_IP.Name = "panel_IP";
-            this.panel_IP.Size = new System.Drawing.Size(265, 59);
-            this.panel_IP.TabIndex = 10;
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -375,19 +375,20 @@
             this.Name = "frmMain";
             this.Text = "Caro";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.panel_menu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            this.panel_IP.ResumeLayout(false);
+            this.panel_IP.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnl_timer.ResumeLayout(false);
             this.pnl_timer.PerformLayout();
             this.guna2CircleProgressBar1.ResumeLayout(false);
             this.guna2CircleProgressBar1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.panel_IP.ResumeLayout(false);
-            this.panel_IP.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

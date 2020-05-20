@@ -57,6 +57,7 @@
     <Compile Include="Chess.cs" />
     <Compile Include="ChessBoard.cs" />
     <Compile Include="Config.cs" />
+    <Compile Include="DataSender.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>

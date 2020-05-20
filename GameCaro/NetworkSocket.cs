@@ -91,12 +91,20 @@ namespace GameCaro
         }
         private bool SendData(Socket target, byte[] data)
         {
-            try
+            if (target != null)
             {
-                return target.Send(data) == 1 ? true : false;
+                try
+                {
+                    return target.Send(data) == 1 ? true : false;
+                }
+                catch
+                {
+                    return false;
+                }
             }
-            catch
+            else
             {
+                MessageBox.Show("Chưa có kết nối ");
                 return false;
             }
         }
