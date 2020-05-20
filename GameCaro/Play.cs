@@ -191,7 +191,24 @@ namespace GameCaro
         {
             int demTren = 0;
             int demDuoi = 0;
-
+            for(int i= 0; i< Config.numChess; i++)
+            {
+                if (oVuaDanh.Dong - i < 0 || oVuaDanh.Cot - i < 0)
+                    break;
+                if (arrChess[oVuaDanh.Dong - i, oVuaDanh.Cot - i].Player == oVuaDanh.Player)
+                    demTren++;
+                else
+                    break;
+            }
+            for (int i = 1; i < Config.numChess; i++)
+            {
+                if (oVuaDanh.Dong + i >= Config.numChess || oVuaDanh.Cot + i >= Config.numChess)
+                    break;
+                if (arrChess[oVuaDanh.Dong + i, oVuaDanh.Cot + i].Player == oVuaDanh.Player)
+                    demDuoi++;
+                else
+                    break;
+            }
             return demTren + demDuoi >= 5 ? true : false;
         }
         private bool DuyetCheoPhu()
@@ -199,6 +216,24 @@ namespace GameCaro
             int demTren = 0;
             int demDuoi = 0;
 
+            for (int i = 0; i < Config.numChess; i++)
+            {
+                if (oVuaDanh.Dong - i < 0 || oVuaDanh.Cot + i >= Config.numChess)
+                    break;
+                if (arrChess[oVuaDanh.Dong - i, oVuaDanh.Cot + i].Player == oVuaDanh.Player) 
+                    demTren++;
+                else
+                    break;
+            }
+            for (int i = 1; i < Config.numChess; i++)
+            {
+                if (oVuaDanh.Dong + i >= Config.numChess || oVuaDanh.Cot - i < 0)
+                    break;
+                if (arrChess[oVuaDanh.Dong + i, oVuaDanh.Cot - i].Player == oVuaDanh.Player)
+                    demDuoi++;
+                else
+                    break;
+            }
             return demTren + demDuoi >= 5 ? true : false;
         }
         #endregion

@@ -80,8 +80,12 @@ namespace GameCaro
         #region Event
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //if (MessageBox.Show("Bạn có muốn thoát ?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-            //    e.Cancel = true;
+            if (MessageBox.Show("Bạn có muốn thoát ?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                e.Cancel = true;
+            else
+            {
+                _Socket.Send(new DataSender((int)Mode.QUIT, new Point(0, 0)));
+            }
         }
 
         private void panel_ChessBoard_Paint(object sender, PaintEventArgs e)
@@ -201,6 +205,11 @@ namespace GameCaro
                     }));
                     break;
                 case ((int)Mode.QUIT):
+                    this.Invoke((MethodInvoker)(() =>
+                    {
+                        MessageBox.Show("Đối thủ đã thoát");
+                        panel_ChessBoard.Enabled = false;
+                    }));
                     break;
                 default:
                     break;
