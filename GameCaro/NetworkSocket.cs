@@ -9,10 +9,12 @@ using System.Windows.Forms;
 
 namespace GameCaro
 {
-    class NetworkSocket
+    internal class NetworkSocket
     {
         #region Server
+
         public Socket Server;
+
         public event EventHandler Connected;
 
         public bool CreateServer()
@@ -36,10 +38,12 @@ namespace GameCaro
                 return false;
             }
         }
-        #endregion
+
+        #endregion Server
 
         #region Client
-        Socket client;
+
+        private Socket client;
 
         public bool ConnectServerr(string ip)
         {
@@ -55,9 +59,11 @@ namespace GameCaro
                 return false;
             }
         }
-        #endregion
+
+        #endregion Client
 
         #region Both
+
         private int buffer = 1024;
 
         public Socket Client { get => client; set => client = value; }
@@ -76,6 +82,7 @@ namespace GameCaro
             BinaryFormatter bf = new BinaryFormatter();
             return bf.Deserialize(ms);
         }
+
         public bool Send(object obj)
         {
             byte[] data = Serialize(obj);
@@ -88,6 +95,7 @@ namespace GameCaro
             bool ReceiveSuccess = ReceiveData(client, reData);
             return Deserialize(reData);
         }
+
         private bool SendData(Socket target, byte[] data)
         {
             if (target != null)
@@ -122,6 +130,7 @@ namespace GameCaro
                 return false;
             }
         }
+
         public string GetIPv4(NetworkInterfaceType _type)
         {
             string ouput = "";
@@ -141,7 +150,7 @@ namespace GameCaro
 
             return ouput;
         }
-        #endregion
 
+        #endregion Both
     }
 }

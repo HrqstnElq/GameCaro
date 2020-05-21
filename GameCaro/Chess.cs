@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GameCaro
+﻿namespace GameCaro
 {
-    class Chess
+    internal class Chess
     {
         public const int SIZE = 30;
         private int _dong;
@@ -17,7 +11,10 @@ namespace GameCaro
         public int Cot { get => _cot; set => _cot = value; }
         public int Player { get => _player; set => _player = value; }
 
-        public Chess() { }
+        public Chess()
+        {
+        }
+
         public Chess(int dong, int cot, int player)
         {
             Dong = dong;

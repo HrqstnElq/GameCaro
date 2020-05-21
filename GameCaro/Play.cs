@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace GameCaro
 {
-    class Play
+    internal class Play
     {
         private Random random = new Random(); //dung de random o may danh neu may danh di luot dau tien
         private ChessBoard chessBoard;
@@ -14,12 +14,13 @@ namespace GameCaro
         private int _cheDoChoi = 0;
         private int _luotDi = 0;
         private bool _sanSang = false;
-        Stack<Chess> _nuocDaDi;
+        private Stack<Chess> _nuocDaDi;
 
         //butve
-        Pen penDrawLine;
-        SolidBrush penBlack;
-        SolidBrush penWhite;
+        private Pen penDrawLine;
+
+        private SolidBrush penBlack;
+        private SolidBrush penWhite;
 
         public int CheDoChoi { get => _cheDoChoi; set => _cheDoChoi = value; }
         public int LuotDi { get => _luotDi; set => _luotDi = value; }
@@ -37,7 +38,6 @@ namespace GameCaro
 
             //khai bao mang cac o co
             arrChess = new Chess[Config.numChess, Config.numChess];
-
         }
 
         public void veBanCo(Graphics g)
@@ -143,8 +143,8 @@ namespace GameCaro
             MayDanh(g);
         }
 
-
         #region KiemTraThang
+
         public bool ThangRoi()
         {
             if (oVuaDanh != null)
@@ -220,6 +220,7 @@ namespace GameCaro
             }
             return demTren + demDuoi >= 5 ? true : false;
         }
+
         private bool DuyetCheoPhu()
         {
             int demTren = 0;
@@ -245,12 +246,14 @@ namespace GameCaro
             }
             return demTren + demDuoi >= 5 ? true : false;
         }
-        #endregion
+
+        #endregion KiemTraThang
 
         #region AI
 
         private int[] MangDiemTanCong = new int[7] { 0, 4, 25, 246, 7300, 6561, 59049 };
         private int[] MangDiemPhongNgu = new int[7] { 0, 3, 24, 243, 2197, 19773, 177957 };
+
         public void MayDanh(Graphics g)
         {
             if (_nuocDaDi.Count == 0)
@@ -264,7 +267,6 @@ namespace GameCaro
                 danhCo(g, new Point(chess.Cot * Config.ChessSize.Width + 1, chess.Dong * Config.ChessSize.Height + 1));
             }
         }
-
 
         private Chess TimKiemNuocDi()
         {
@@ -283,19 +285,19 @@ namespace GameCaro
                         DiemTanCong = duyetTC_Ngang(i, j) + duyetTC_Doc(i, j) + duyetTC_CheoXuoi(i, j) + duyetTC_CheoNguoc(i, j);
                         DiemPhongNgu = duyetPN_Ngang(i, j) + duyetPN_Doc(i, j) + duyetPN_CheoXuoi(i, j) + duyetPN_CheoNguoc(i, j);
                         DiemTam = DiemTanCong > DiemPhongNgu ? DiemTanCong : DiemPhongNgu;
-                        if(DiemMax < DiemTam)
+                        if (DiemMax < DiemTam)
                         {
                             DiemMax = DiemTam;
-                            chess = new Chess(i, j, arrChess[i,j].Player);
+                            chess = new Chess(i, j, arrChess[i, j].Player);
                         }
                     }
                 }
-
             }
             return chess;
         }
 
         #region Tan_cong
+
         public int duyetTC_Ngang(int dongHT, int cotHT)
         {
             int DiemTanCong = 0;
@@ -307,7 +309,6 @@ namespace GameCaro
             //bên phải
             for (int dem = 1; dem <= 4 && cotHT < Config.numChess - 5; dem++)
             {
-
                 if (arrChess[dongHT, cotHT + dem].Player == 1)
                 {
                     if (dem == 1)
@@ -316,8 +317,7 @@ namespace GameCaro
                     SoQuanTa++;
                     KhoangChong++;
                 }
-                else
-                    if (arrChess[dongHT, cotHT + dem].Player == 2)
+                else if (arrChess[dongHT, cotHT + dem].Player == 2)
                 {
                     SoQuanDichPhai++;
                     break;
@@ -334,10 +334,8 @@ namespace GameCaro
 
                     SoQuanTa++;
                     KhoangChong++;
-
                 }
-                else
-                    if (arrChess[dongHT, cotHT - dem].Player == 2)
+                else if (arrChess[dongHT, cotHT - dem].Player == 2)
                 {
                     SoQuanDichTrai++;
                     break;
@@ -372,10 +370,8 @@ namespace GameCaro
 
                     SoQuanTa++;
                     KhoangChong++;
-
                 }
-                else
-                    if (arrChess[dongHT - dem, cotHT].Player == 2)
+                else if (arrChess[dongHT - dem, cotHT].Player == 2)
                 {
                     SoQuanDichTren++;
                     break;
@@ -392,10 +388,8 @@ namespace GameCaro
 
                     SoQuanTa++;
                     KhoangChong++;
-
                 }
-                else
-                    if (arrChess[dongHT + dem, cotHT].Player == 2)
+                else if (arrChess[dongHT + dem, cotHT].Player == 2)
                 {
                     SoQuanDichDuoi++;
                     break;
@@ -430,10 +424,8 @@ namespace GameCaro
 
                     SoQuanTa++;
                     KhoangChong++;
-
                 }
-                else
-                    if (arrChess[dongHT + dem, cotHT + dem].Player == 2)
+                else if (arrChess[dongHT + dem, cotHT + dem].Player == 2)
                 {
                     SoQuanDichCheoTren++;
                     break;
@@ -450,10 +442,8 @@ namespace GameCaro
 
                     SoQuanTa++;
                     KhoangChong++;
-
                 }
-                else
-                    if (arrChess[dongHT - dem, cotHT - dem].Player == 2)
+                else if (arrChess[dongHT - dem, cotHT - dem].Player == 2)
                 {
                     SoQuanDichCheoDuoi++;
                     break;
@@ -488,10 +478,8 @@ namespace GameCaro
 
                     SoQuanTa++;
                     KhoangChong++;
-
                 }
-                else
-                    if (arrChess[dongHT - dem, cotHT + dem].Player == 2)
+                else if (arrChess[dongHT - dem, cotHT + dem].Player == 2)
                 {
                     SoQuanDichCheoTren++;
                     break;
@@ -508,10 +496,8 @@ namespace GameCaro
 
                     SoQuanTa++;
                     KhoangChong++;
-
                 }
-                else
-                    if (arrChess[dongHT + dem, cotHT - dem].Player == 2)
+                else if (arrChess[dongHT + dem, cotHT - dem].Player == 2)
                 {
                     SoQuanDichCheoDuoi++;
                     break;
@@ -526,7 +512,8 @@ namespace GameCaro
             DiemTanCong += MangDiemTanCong[SoQuanTa];
             return DiemTanCong;
         }
-        #endregion
+
+        #endregion Tan_cong
 
         #region phòng ngự
 
@@ -541,7 +528,6 @@ namespace GameCaro
             int KhoangChongTrai = 0;
             bool ok = false;
 
-
             for (int dem = 1; dem <= 4 && cotHT < Config.numChess - 5; dem++)
             {
                 if (arrChess[dongHT, cotHT + dem].Player == 2)
@@ -551,8 +537,7 @@ namespace GameCaro
 
                     SoQuanDich++;
                 }
-                else
-                    if (arrChess[dongHT, cotHT + dem].Player == 1)
+                else if (arrChess[dongHT, cotHT + dem].Player == 1)
                 {
                     if (dem == 4)
                         DiemPhongNgu -= 170;
@@ -583,8 +568,7 @@ namespace GameCaro
 
                     SoQuanDich++;
                 }
-                else
-                    if (arrChess[dongHT, cotHT - dem].Player == 1)
+                else if (arrChess[dongHT, cotHT - dem].Player == 1)
                 {
                     if (dem == 4)
                         DiemPhongNgu -= 170;
@@ -633,10 +617,8 @@ namespace GameCaro
                         DiemPhongNgu += 9;
 
                     SoQuanDich++;
-
                 }
-                else
-                    if (arrChess[dongHT - dem, cotHT].Player == 1)
+                else if (arrChess[dongHT - dem, cotHT].Player == 1)
                 {
                     if (dem == 4)
                         DiemPhongNgu -= 170;
@@ -668,8 +650,7 @@ namespace GameCaro
 
                     SoQuanDich++;
                 }
-                else
-                    if (arrChess[dongHT + dem, cotHT].Player == 1)
+                else if (arrChess[dongHT + dem, cotHT].Player == 1)
                 {
                     if (dem == 4)
                         DiemPhongNgu -= 170;
@@ -718,8 +699,7 @@ namespace GameCaro
 
                     SoQuanDich++;
                 }
-                else
-                    if (arrChess[dongHT + dem, cotHT + dem].Player == 1)
+                else if (arrChess[dongHT + dem, cotHT + dem].Player == 1)
                 {
                     if (dem == 4)
                         DiemPhongNgu -= 170;
@@ -750,8 +730,7 @@ namespace GameCaro
 
                     SoQuanDich++;
                 }
-                else
-                    if (arrChess[dongHT - dem, cotHT - dem].Player == 1)
+                else if (arrChess[dongHT - dem, cotHT - dem].Player == 1)
                 {
                     if (dem == 4)
                         DiemPhongNgu -= 170;
@@ -794,7 +773,6 @@ namespace GameCaro
             //lên
             for (int dem = 1; dem <= 4 && dongHT > 4 && cotHT < Config.numChess - 5; dem++)
             {
-
                 if (arrChess[dongHT - dem, cotHT + dem].Player == 2)
                 {
                     if (dem == 1)
@@ -802,8 +780,7 @@ namespace GameCaro
 
                     SoQuanDich++;
                 }
-                else
-                    if (arrChess[dongHT - dem, cotHT + dem].Player == 1)
+                else if (arrChess[dongHT - dem, cotHT + dem].Player == 1)
                 {
                     if (dem == 4)
                         DiemPhongNgu -= 170;
@@ -820,7 +797,6 @@ namespace GameCaro
                 }
             }
 
-
             if (SoQuanDich == 3 && KhoangChongTren == 1 && ok)
                 DiemPhongNgu -= 200;
 
@@ -836,8 +812,7 @@ namespace GameCaro
 
                     SoQuanDich++;
                 }
-                else
-                    if (arrChess[dongHT + dem, cotHT - dem].Player == 1)
+                else if (arrChess[dongHT + dem, cotHT - dem].Player == 1)
                 {
                     if (dem == 4)
                         DiemPhongNgu -= 170;
@@ -866,9 +841,8 @@ namespace GameCaro
             return DiemPhongNgu;
         }
 
-        #endregion
-        #endregion
+        #endregion phòng ngự
 
+        #endregion AI
     }
-
 }
