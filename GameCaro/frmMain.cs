@@ -238,7 +238,7 @@ namespace GameCaro
                     panel_ChessBoard.Enabled = false;
                 }
             }
-            if (_gamePlay.CheDoChoi == 2)
+            if (_gamePlay.CheDoChoi == 2 && danhThanhcong == true)
                 _gamePlay.MayDanh(_plnGrap);
         }
 
@@ -258,12 +258,23 @@ namespace GameCaro
         {
             if (_lanEnable == false)
             {
-                int player = (int)sender;
-                if (player == 1)
-                    MessageBox.Show("Đỏ thắng");
-                else if (player == 2)
-                    MessageBox.Show("Xanh thắng");
-                panel_ChessBoard.Enabled = false;
+                if (_gamePlay.CheDoChoi == 1)
+                {
+                    int player = (int)sender;
+                    if (player == 1)
+                        MessageBox.Show("Đỏ thắng");
+                    else if (player == 2)
+                        MessageBox.Show("Xanh thắng");
+                }
+                else if(_gamePlay.CheDoChoi == 2)
+                {
+                    int player = (int)sender;
+                    if (player == 1)
+                        MessageBox.Show("Máy thắng ");
+                    else if (player == 2)
+                        MessageBox.Show("Người thắng ");
+                }
+                    panel_ChessBoard.Enabled = false;
             }
             else
             {
