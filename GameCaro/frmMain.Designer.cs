@@ -42,10 +42,6 @@
             this.radio_pvp = new Guna.UI.WinForms.GunaRadioButton();
             this.btn_Start = new Guna.UI.WinForms.GunaAdvenceButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pnl_timer = new System.Windows.Forms.GroupBox();
-            this.label_luot = new System.Windows.Forms.Label();
-            this.guna2CircleProgressBar1 = new Guna.UI2.WinForms.Guna2CircleProgressBar();
-            this.label_Time = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,8 +54,6 @@
             this.panel_IP.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.pnl_timer.SuspendLayout();
-            this.guna2CircleProgressBar1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,7 +74,6 @@
             // 
             this.panel_menu.Controls.Add(this.groupBox2);
             this.panel_menu.Controls.Add(this.pictureBox1);
-            this.panel_menu.Controls.Add(this.pnl_timer);
             this.panel_menu.Location = new System.Drawing.Point(13, 30);
             this.panel_menu.Margin = new System.Windows.Forms.Padding(4);
             this.panel_menu.Name = "panel_menu";
@@ -247,58 +240,6 @@
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             // 
-            // pnl_timer
-            // 
-            this.pnl_timer.Controls.Add(this.label_luot);
-            this.pnl_timer.Controls.Add(this.guna2CircleProgressBar1);
-            this.pnl_timer.Enabled = false;
-            this.pnl_timer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnl_timer.Location = new System.Drawing.Point(5, 525);
-            this.pnl_timer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pnl_timer.Name = "pnl_timer";
-            this.pnl_timer.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pnl_timer.Size = new System.Drawing.Size(281, 215);
-            this.pnl_timer.TabIndex = 3;
-            this.pnl_timer.TabStop = false;
-            this.pnl_timer.Text = "Timer";
-            // 
-            // label_luot
-            // 
-            this.label_luot.AutoSize = true;
-            this.label_luot.Location = new System.Drawing.Point(6, 189);
-            this.label_luot.Name = "label_luot";
-            this.label_luot.Size = new System.Drawing.Size(78, 20);
-            this.label_luot.TabIndex = 3;
-            this.label_luot.Text = "Lượt mày";
-            // 
-            // guna2CircleProgressBar1
-            // 
-            this.guna2CircleProgressBar1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2CircleProgressBar1.Controls.Add(this.label_Time);
-            this.guna2CircleProgressBar1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.guna2CircleProgressBar1.FillThickness = 12;
-            this.guna2CircleProgressBar1.Location = new System.Drawing.Point(49, 18);
-            this.guna2CircleProgressBar1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.guna2CircleProgressBar1.Maximum = 9000;
-            this.guna2CircleProgressBar1.Name = "guna2CircleProgressBar1";
-            this.guna2CircleProgressBar1.ProgressEndCap = System.Drawing.Drawing2D.LineCap.Round;
-            this.guna2CircleProgressBar1.ProgressThickness = 10;
-            this.guna2CircleProgressBar1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CircleProgressBar1.ShadowDecoration.Parent = this.guna2CircleProgressBar1;
-            this.guna2CircleProgressBar1.Size = new System.Drawing.Size(173, 160);
-            this.guna2CircleProgressBar1.TabIndex = 2;
-            this.guna2CircleProgressBar1.Value = 4000;
-            // 
-            // label_Time
-            // 
-            this.label_Time.AutoSize = true;
-            this.label_Time.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Time.Location = new System.Drawing.Point(66, 59);
-            this.label_Time.Name = "label_Time";
-            this.label_Time.Size = new System.Drawing.Size(42, 44);
-            this.label_Time.TabIndex = 1;
-            this.label_Time.Text = "9";
-            // 
             // menuStrip1
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -383,10 +324,6 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.pnl_timer.ResumeLayout(false);
-            this.pnl_timer.PerformLayout();
-            this.guna2CircleProgressBar1.ResumeLayout(false);
-            this.guna2CircleProgressBar1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -401,10 +338,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private Guna.UI.WinForms.GunaAdvenceButton btn_Start;
-        private System.Windows.Forms.GroupBox pnl_timer;
-        private System.Windows.Forms.Label label_luot;
-        private Guna.UI2.WinForms.Guna2CircleProgressBar guna2CircleProgressBar1;
-        private System.Windows.Forms.Label label_Time;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newGameToolStripMenuItem;

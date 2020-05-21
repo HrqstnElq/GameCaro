@@ -17,6 +17,7 @@ namespace GameCaro
         public int Cot { get => _cot; set => _cot = value; }
         public int Player { get => _player; set => _player = value; }
 
+        public Chess() { }
         public Chess(int dong, int cot, int player)
         {
             Dong = dong;

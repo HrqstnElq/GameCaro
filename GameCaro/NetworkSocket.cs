@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GameCaro
@@ -16,7 +12,7 @@ namespace GameCaro
     class NetworkSocket
     {
         #region Server
-        Socket Server;
+        public Socket Server;
         public event EventHandler Connected;
 
         public bool CreateServer()
@@ -63,6 +59,9 @@ namespace GameCaro
 
         #region Both
         private int buffer = 1024;
+
+        public Socket Client { get => client; set => client = value; }
+
         public byte[] Serialize(object obj)
         {
             MemoryStream ms = new MemoryStream();

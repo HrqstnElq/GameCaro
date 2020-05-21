@@ -56,6 +56,12 @@ namespace GameCaro
                 _gamePlay.NguoiVsNguoi(_plnGrap);
                 this.Invoke((MethodInvoker)(() => { panel_ChessBoard.Enabled = true; }));
             }
+            else if(_gamePlay.CheDoChoi == 2)
+            {
+                _plnGrap.Clear(panel_ChessBoard.BackColor);
+                _gamePlay.NguoiVsMay(_plnGrap);
+                this.Invoke((MethodInvoker)(() => { panel_ChessBoard.Enabled = true; }));
+            }
             if (_lanEnable == true)
                 panel_ChessBoard.Enabled = _isServer;
             _isWinner = false;
@@ -82,7 +88,7 @@ namespace GameCaro
         {
             if (MessageBox.Show("Bạn có muốn thoát ?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 e.Cancel = true;
-            else
+            else if(_lanEnable ==  true)
             {
                 _Socket.Send(new DataSender((int)Mode.QUIT, new Point(0, 0)));
             }
@@ -117,7 +123,7 @@ namespace GameCaro
             {
                 if (_Socket.ConnectServerr(txb_IP.Text))
                 {
-                    this.Text = "Caro - Client : ";
+                    this.Text = "Caro - Client";
                     //btn_Start.OnHoverBaseColor = Color.Red;
                     btn_Start.BaseColor = Color.Red;
                     Listen();
@@ -139,7 +145,7 @@ namespace GameCaro
                 if (_gamePlay.CheDoChoi == 1)
                     _gamePlay.NguoiVsNguoi(_plnGrap);
                 else if (_gamePlay.CheDoChoi == 2)
-                    MessageBox.Show("Chua lam");
+                    _gamePlay.NguoiVsMay(_plnGrap);
                 else if (_gamePlay.CheDoChoi == 0)
                 {
                     MessageBox.Show("Chưa chọn chế độ chơi");
@@ -209,6 +215,9 @@ namespace GameCaro
                     {
                         MessageBox.Show("Đối thủ đã thoát");
                         panel_ChessBoard.Enabled = false;
+                        _Socket.Client = null;
+                        _Socket.Server.Close();
+                        _Socket.CreateServer();
                     }));
                     break;
                 default:
@@ -229,6 +238,8 @@ namespace GameCaro
                     panel_ChessBoard.Enabled = false;
                 }
             }
+            if (_gamePlay.CheDoChoi == 2)
+                _gamePlay.MayDanh(_plnGrap);
         }
 
         private void panel_ChessBoard_MouseMove(object sender, MouseEventArgs e)
@@ -241,7 +252,6 @@ namespace GameCaro
         {
             _lanEnable = swift_lanMode.Checked;
             panel_IP.Enabled = swift_lanMode.Checked;
-            pnl_timer.Enabled = swift_lanMode.Checked;
         }
 
         private void GamePlay_eventChienThang(object sender, EventArgs e)
